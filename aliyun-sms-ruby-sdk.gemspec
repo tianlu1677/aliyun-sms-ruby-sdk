@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["tianlu1677"]
   spec.email         = ["tianlu1677@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Use aliyun-sms to send phone code or email.}
+  spec.description   = %q{Aliyun can support stable service on phone code and email, it is a good choise.}
+  spec.homepage      = "http://github.com/tianlu1677."
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
