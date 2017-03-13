@@ -1,27 +1,21 @@
-require 'aliyun/sms'
-require 'minitest/autorun'
+# require 'aliyun/sms'
+# require 'minitest/autorun'
+require "./test_helper"
 
 class TestPhoneCode < Minitest::Test
 	def setup
 		Aliyun::Sms::PhoneCode.configure do |config|
 			config.access_key_secret = 'testsecret'
       config.access_key_id = 'testid'
-      # config.action = 'SingleSendSms'
+      config.action = 'SingleSendSms'
       config.format = 'XML'
-      # config.region_id = 'cn-hangzhou'
+      config.region_id = 'cn-hangzhou'
       config.sign_name = '标签测试'
-      # config.signature_method = 'HMAC-SHA1'
-      # config.signature_version = '1.0'
-      # config.sms_version = '2016-09-27'
+      config.signature_method = 'HMAC-SHA1'
+      config.signature_version = '1.0'
+      config.sms_version = '2016-09-27'
 		end
 	end
-
-	
-	# def test_get_the_query_string
-	# end
-
-	# def test_get_the_canonicalized_query_string
-	# end
 
 	def test_get_sign
 		params_input = {
