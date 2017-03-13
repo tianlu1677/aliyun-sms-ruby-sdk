@@ -18,36 +18,37 @@ gem 'aliyun-sms-ruby-sdk'
 
     $ gem install aliyun-sms-ruby-sdk
 
-## 使用
-### 1. 创建配置文件在 `config/initializers/aliyun-sms-ruby-sdk.rb`
+## 具体使用
+### 1. 创建配置文件 
+
+`config/initializers/aliyun-sms-ruby-sdk.rb`
 
 ```ruby
 Aliyun::Sms::PhoneCode.configure do |config|
-      config.access_key_secret = ACCESS_KEY_SECRET # 阿里云接入密钥，在阿里云控制台申请
-      config.access_key_id = ACCESS_KEY_ID         # 阿里云接入 ID, 
-      config.sign_name = SIGN_NAME                 # 短信签名，在阿里云申请开通短信服务时申请获取在阿里云控制台申请
-      
-      #config.action = 'SingleSendSms'              # 默认设置，如果没有特殊需要，可以不改
-      #config.format = 'JSON'                       # 短信推送返回信息格式，可以填写 'JSON'或者'XML'
-      #config.region_id = 'cn-hangzhou'             # 默认设置，如果没有特殊需要，可以不改      
-      
-      #config.signature_method = 'HMAC-SHA1'        # 加密算法，默认设置，不用修改
-      #config.signature_version = '1.0'             # 签名版本，默认设置，不用修改
-      #config.sms_version = '2016-09-27'            # 服务版本，默认设置，不用修改
+  config.access_key_secret = ACCESS_KEY_SECRET # 阿里云接入密钥，在阿里云控制台申请
+  config.access_key_id = ACCESS_KEY_ID         # 阿里云接入 ID, 
+  config.sign_name = SIGN_NAME                 # 短信签名，在阿里云申请开通短信服务时申请获取在阿里云控制台申请
+  
+  #config.action = 'SingleSendSms'              # 默认设置，如果没有特殊需要，可以不改
+  #config.format = 'JSON'                       # 短信推送返回信息格式，可以填写 'JSON'或者'XML'
+  #config.region_id = 'cn-hangzhou'             # 默认设置，如果没有特殊需要，可以不改      
+  
+  #config.signature_method = 'HMAC-SHA1'        # 加密算法，默认设置，不用修改
+  #config.signature_version = '1.0'             # 签名版本，默认设置，不用修改
+  #config.sms_version = '2016-09-27'            # 服务版本，默认设置，不用修改
   end
-
 ```
 
-### 第二步调用方法发送短信
+### 2. 调用方法发送短信
 
 ```ruby
-$ Aliyun::Sms::PhoneCode.send(template_code, phone_number, param_string)
+ Aliyun::Sms::PhoneCode.send(template_code, phone_number, param_string)
 ```
 
 参数说明：
-1. phone_number: 接收短信的手机号，必须为字符型，例如 '1234567890'；
-2. template_code: 短信模版代码，必须为字符型，申请开通短信服务后，由阿里云提供，例如 'SMS_12345678'；
-3. para_string: 请求字符串，向短信模版提供参数，必须为字符型的json格式，例如 '{"customer": "username"}'。
+- 1. phone_number: 接收短信的手机号，必须为字符型，例如 '1234567890'；
+- 2. template_code: 短信模版代码，必须为字符型，申请开通短信服务后，由阿里云提供，例如 'SMS_12345678'；
+- 3. para_string: 请求字符串，向短信模版提供参数，必须为字符型的json格式，例如 '{"customer": "username"}'。
 
 在程序中可以先用 HASH 组织 param_string 内容，再使用 to_json 方法转换为 json 格式字符串，例如：
 
@@ -58,7 +59,7 @@ param_string = {'customer' => 'username'}.to_json
 Aliyun::Sms::PhoneCode.send(template_code, phone_number, param_string)
 ```
 
-## 测试
+## 修改测试
 在根目录下
 
 ```ruby
