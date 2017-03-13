@@ -1,0 +1,1 @@
+require "aliyun/sms/phone_code"
