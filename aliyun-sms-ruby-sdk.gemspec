@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'aliyun/sms/ruby/sdk/version'
+require 'aliyun/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "aliyun-sms-ruby-sdk"
-  spec.version       = Aliyun::Sms::Ruby::Sdk::VERSION
+  spec.version       = Aliyun::VERSION
   spec.authors       = ["tianlu1677"]
   spec.email         = ["tianlu1677@gmail.com"]
 
