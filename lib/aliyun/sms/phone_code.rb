@@ -59,13 +59,23 @@ module Aliyun
         	}
 				end
 
-				# TODO: 错误处理
+				
 				def send(template_code, phone_number, params)
-					Net::HTTP.post( 
-							URI("https://sms.aliyuncs.com"), 
-							headers: {"Content-Type": "application/x-www-form-urlencoded"},
-							body: sign_result(configuration.access_key_secret, params)
-						)
+					begin
+						uri = URI("https://sms.aliyuncs.com")
+						header = {"Content-Type": "application/x-www-form-urlencoded"}
+						http = Net::HTTP.new(uri.host, uri.port)
+						req = Net::HTTP::Post.new(uri.request_uri, header)
+						req.body = sign_result(configuration.access_key_secret, params)
+						response = http.request(req)
+						if response.status == 200 || response.status == 201
+							{code: 200, body: response.body, msg: "Success"}
+						else
+							{code: response.body, body: '', msg: "A Error"}
+						end
+					rescue => e
+						puts "errors #{e}"
+					end
 				end
 
 				def sign_result(key_secret, params)
